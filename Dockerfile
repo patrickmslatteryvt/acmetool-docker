@@ -4,7 +4,8 @@ ENV ACMETOOL_VERSION=0.0.51 \
     CONFD_VERSION=0.12.0-alpha3 \
     ACME_EMAIL=changeme@example.com \
     ACME_SERVER=https://acme-staging.api.letsencrypt.org/directory \
-    CERT_DOMAINS="example.com www.example.com"
+    CERT_DOMAINS="example.com www.example.com" \
+    HAPROXY_ALWAYS_GENERATE=yes
 
 # cron.d keeps acmetool from complaining.
 RUN apk --no-cache add nginx && \
