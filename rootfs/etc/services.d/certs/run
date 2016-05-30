@@ -1,0 +1,10 @@
+#!/usr/bin/with-contenv sh
+
+# Wait for nginx to start up.
+sleep 5
+
+# Tell acmetool which domains we want certs for.
+/usr/local/bin/acmetool want $CERT_DOMAINS
+
+# Do not run this service after first run.
+s6-svc -O /var/run/s6/services/certs

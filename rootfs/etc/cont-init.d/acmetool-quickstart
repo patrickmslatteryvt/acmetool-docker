@@ -1,0 +1,3 @@
+#!/usr/bin/with-contenv sh
+sed -i "s/%email/$ACME_EMAIL/" /var/lib/acme/conf/responses
+/usr/local/bin/acmetool quickstart
