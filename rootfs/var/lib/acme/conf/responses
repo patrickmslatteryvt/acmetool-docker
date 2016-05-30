@@ -5,7 +5,7 @@
 "acmetool-quickstart-webroot-path": "/usr/share/nginx/html/.well-known/acme-challenge"
 "acmetool-quickstart-complete": true
 "acmetool-quickstart-install-cronjob": false
-"acmetool-quickstart-install-haproxy-script": false
+"acmetool-quickstart-install-haproxy-script": true
 "acmetool-quickstart-install-redirector-systemd": false
 "acmetool-quickstart-key-type": ecdsa
 "acmetool-quickstart-rsa-key-size": 4096
