@@ -1,10 +1,20 @@
 #!/usr/bin/with-contenv sh
 
 # Wait for nginx to start up.
+echo "Giving Nginx time to start..."
 sleep 5
 
 # Tell acmetool which domains we want certs for.
+echo "Domains: $CERT_DOMAINS"
 /usr/local/bin/acmetool want $CERT_DOMAINS
+RESULT=$?
+
+if [ $RESULT -ne 0 ]; then
+    # Wait a little and try again, in case things needed more time.
+    echo "That didn't go well; waiting before trying one more time..."
+    sleep 10
+    /usr/local/bin/acmetool reconcile --batch
+fi
 
 # Do not run this service after first run.
 s6-svc -O /var/run/s6/services/certs

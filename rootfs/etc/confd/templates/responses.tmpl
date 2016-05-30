@@ -1,6 +1,6 @@
-"acme-enter-email": %email
+"acme-enter-email": {{ getv "/acme/email" }}
 "acme-agreement:https://letsencrypt.org/documents/LE-SA-v1.0.1-July-27-2015.pdf": true
-"acmetool-quickstart-choose-server": https://acme-staging.api.letsencrypt.org/directory
+"acmetool-quickstart-choose-server": {{ getv "/acme/server" }}
 "acmetool-quickstart-choose-method": webroot
 "acmetool-quickstart-webroot-path": "/usr/share/nginx/html/.well-known/acme-challenge"
 "acmetool-quickstart-complete": true

@@ -1,3 +1,4 @@
 #!/usr/bin/with-contenv sh
-sed -i "s/%email/$ACME_EMAIL/" /var/lib/acme/conf/responses
-/usr/local/bin/acmetool quickstart
+mkdir -p /var/lib/acme/conf
+/usr/local/bin/confd -onetime -backend env
+/usr/local/bin/acmetool quickstart --batch

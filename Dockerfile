@@ -3,6 +3,7 @@ FROM quay.io/justcontainers/base-alpine:v0.11.1
 ENV ACMETOOL_VERSION=0.0.51 \
     CONFD_VERSION=0.12.0-alpha3 \
     ACME_EMAIL=changeme@example.com \
+    ACME_SERVER=https://acme-staging.api.letsencrypt.org/directory \
     CERT_DOMAINS="example.com www.example.com"
 
 # cron.d keeps acmetool from complaining.
@@ -12,6 +13,9 @@ RUN apk --no-cache add nginx && \
     curl -L https://github.com/hlandau/acme/releases/download/v$ACMETOOL_VERSION/acmetool-v$ACMETOOL_VERSION-linux_amd64.tar.gz | tar xz --strip-components=2 acmetool-v$ACMETOOL_VERSION-linux_amd64/bin/acmetool && \
     apk del .download-deps && \
     mkdir /etc/cron.d
+
+ADD https://github.com/kelseyhightower/confd/releases/download/v${CONFD_VERSION}/confd-${CONFD_VERSION}-linux-amd64 /usr/local/bin/confd
+RUN chmod +x /usr/local/bin/confd
 
 COPY rootfs /
 
